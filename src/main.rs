@@ -7,9 +7,12 @@
 use core::panic::PanicInfo;
 use tuzos::println;
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("Hello World{}", "!");
+    println!("Booting TuzOS {}", VERSION);
+    tuzos::init();
 
     #[cfg(test)]
     test_main();
