@@ -1,8 +1,8 @@
 use super::{Task, TaskId};
 use alloc::{collections::BTreeMap, sync::Arc};
 use core::task::Waker;
-use crossbeam_queue::ArrayQueue;
 use core::task::{Context, Poll};
+use crossbeam_queue::ArrayQueue;
 
 struct TaskWaker {
     task_id: TaskId,

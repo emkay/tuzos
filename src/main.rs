@@ -8,19 +8,18 @@ extern crate alloc;
 
 use core::panic::PanicInfo;
 use bootloader::{BootInfo, entry_point};
+use x86_64::VirtAddr;
 use tuzos::println;
 use tuzos::task::{Task, executor::Executor, keyboard};
+use tuzos::allocator;
+use tuzos::memory;
+use tuzos::memory::BootInfoFrameAllocator;
 
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 entry_point!(kernel_main);
 
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
-    use tuzos::allocator;
-    use tuzos::memory;
-    use tuzos::memory::BootInfoFrameAllocator;
-    use x86_64::VirtAddr;
-
     println!("Booting TuzOS {}", VERSION);
     tuzos::init();
 
